@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @checkout.message %>
+</p>
+
+<p>
+  <strong>Signature:</strong>
+  <%= @checkout.signature %>
+</p>
+
+<p>
+  <strong>Recipient name:</strong>
+  <%= @checkout.recipient_name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @checkout.phone %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @checkout.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @checkout.city %>
+</p>
+
+<p>
+  <strong>Florist instruction:</strong>
+  <%= @checkout.florist_instruction %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @checkout.order %>
+</p>
+
+<%= link_to 'Edit', edit_checkout_path(@checkout) %> |
+<%= link_to 'Back', checkouts_path %>

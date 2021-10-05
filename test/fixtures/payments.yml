@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  token: MyString
+  state: MyString
+  total: 9.99
+  checkout: one
+
+two:
+  token: MyString
+  state: MyString
+  total: 9.99
+  checkout: two
