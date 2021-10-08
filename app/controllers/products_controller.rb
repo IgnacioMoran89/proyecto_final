@@ -13,6 +13,8 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @shop_profiles = ShopProfile.pluck :name, :id #Pluck disponibiliza atributos de otro modelo
+    
   end
 
   # GET /products/1/edit
@@ -21,7 +23,7 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
-    @product = Product.new(product_params)
+    @product = Product.new(product_params.merge(shop_profile_id: current_user.id))
 
     respond_to do |format|
       if @product.save
