@@ -1,3 +1,3 @@
 class Product < ApplicationRecord
-  belongs_to :shop_profile
+  belongs_to :user
 end

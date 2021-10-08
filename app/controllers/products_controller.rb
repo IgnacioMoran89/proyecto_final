@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @shop_profiles = ShopProfile.pluck :name, :id #Pluck disponibiliza atributos de otro modelo
-    
+    @users = User.pluck :name, :id #Pluck disponibiliza atributos de otro modelo
   end
 
   # GET /products/1/edit
@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
-    @product = Product.new(product_params.merge(shop_profile_id: current_user.id))
+    @product = Product.new(product_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @product.save
@@ -66,6 +66,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :description, :price, :img_url, :shop_profile_id)
+      params.require(:product).permit(:name, :description, :price, :img_url, :shop_profile_id, :user_id)
     end
 end
