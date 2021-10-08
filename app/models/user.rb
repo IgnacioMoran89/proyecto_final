@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum role: [:customer, :client, :admin]
+  has_many :reviews, dependent: :destroy
 end

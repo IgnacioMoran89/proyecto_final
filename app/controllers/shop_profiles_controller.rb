@@ -8,6 +8,13 @@ class ShopProfilesController < ApplicationController
 
   # GET /shop_profiles/1 or /shop_profiles/1.json
   def show
+    @reviews = Review.where(shop_profile_id: @shop_profile.id).order("created_at DESC")
+
+    if @reviews.blank?
+      @avg_review = 0
+    else
+      @avg_review = @reviews.average(:rating).round(2)
+    end
   end
 
   # GET /shop_profiles/new

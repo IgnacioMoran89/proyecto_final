@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :reviews
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :payments
@@ -7,7 +8,11 @@ Rails.application.routes.draw do
   resources :products
   resources :checkouts
   resources :orders
-  resources :shop_profiles
+
+  resources :shop_profiles do
+    resources :reviews, except: [:show, :index]
+  end
+
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
