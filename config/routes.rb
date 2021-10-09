@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   resources :order_items
+  get 'cart', to: 'cart#show'
+  get 'search', to: 'menu#search'
+  get 'menu', to: 'menu#index'
   resources :reviews
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
