@@ -20,7 +20,7 @@
         <td><%= product.name %></td>
         <td><%= product.description %></td>
         <td><%= product.price %></td>
-        <td><%= product.img_url %></td>
+        <td><img src="<%= product.img_url %>" width="60" height="60" class="round-circle mb-2" ></td>
         <td><%= product.user_id %></td>
         <td><%= link_to 'Buy', new_order_path %></td>
         <td><%= link_to 'Show', product %></td>
