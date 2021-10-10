@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :products
   resources :checkouts
   resources :orders
-  resource :cart, only: [:show, :update]
+  resource :cart, only: [:show]
 
   resources :shop_profiles do
     resources :reviews, except: [:show, :index]
