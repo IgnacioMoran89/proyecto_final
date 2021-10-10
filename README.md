@@ -9,6 +9,12 @@ Things you may want to cover:
 
 * Trello: https://trello.com/b/B1c10r9r/proyecto-final
 
-* CanCanCan usado para los roles.
+* HITO 2
 
-* ActiveAdmin usado para administrar recursos.
+* Devise implementado para registros y login.
+* CanCanCan implementado para los roles.
+* ActiveAdmin implementado para administrar recursos.
+* Funcionalidad Especial: usuario logueado puede ver en que ciudades encuentra florerías.
+* El sistema de calificación fue implementado para los perfiles de las florerías.
+* Interacción del usuario con los productos: realizar una orden mediante carro de compra.
+* Usuario elimina recursos, cancelando y removiando los productos del carro de compra.
