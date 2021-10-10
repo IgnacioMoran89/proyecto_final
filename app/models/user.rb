@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
   enum role: [:customer, :client, :admin]
   has_many :reviews, dependent: :destroy
+
+  def is?( requested_role )
+    self.role == requested_role.to_s
+  end
 end

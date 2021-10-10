@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_product, only: %i[ show edit update destroy ]
 
   # GET /products or /products.json
@@ -24,6 +25,7 @@ class ProductsController < ApplicationController
   # POST /products or /products.json
   def create
     @product = Product.new(product_params.merge(user_id: current_user.id))
+    @categories = Category.all
 
     respond_to do |format|
       if @product.save

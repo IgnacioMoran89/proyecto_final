@@ -9,4 +9,6 @@ Things you may want to cover:
 
 * Trello: https://trello.com/b/B1c10r9r/proyecto-final
 
-* 
+* CanCanCan usado para los roles.
+
+* ActiveAdmin usado para administrar recursos.

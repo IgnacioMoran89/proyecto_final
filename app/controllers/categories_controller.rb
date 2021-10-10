@@ -67,3 +67,5 @@ class CategoriesController < ApplicationController
       params.require(:category).permit(:name)
     end
 end
+
+

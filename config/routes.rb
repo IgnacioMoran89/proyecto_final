@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :order_items
   resources :reviews
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   resources :products
   resources :checkouts
   resources :orders
+  resource :cart, only: [:show, :update]
 
   resources :shop_profiles do
     resources :reviews, except: [:show, :index]
