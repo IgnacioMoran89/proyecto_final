@@ -16,6 +16,7 @@ ActiveAdmin.register User do
   # end
 
   index do
+    column :id
     column :email
     column :role
     #column :status_payment
@@ -24,6 +25,7 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs 'User' do
+      f.input :id
       f.input :email
       f.input :role
       #f.input :status_payment

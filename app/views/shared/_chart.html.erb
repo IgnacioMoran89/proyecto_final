@@ -1,0 +1,18 @@
+# app/views/shared/_chart.html.erb
+<div>
+    <h2>Cantidad de Usuarios Registrados</h2>
+    <% my_chart = User.group_by_month(:created_at, last: 3, format: "%b %Y").count %>
+    <%= column_chart my_chart %>
+</div>
+
+<div>
+    <h2>Cantidad de Florerías Creadas</h2>
+    <% my_chart = ShopProfile.group_by_month(:created_at, last: 3, format: "%b %Y").count %>
+    <%= column_chart my_chart %>
+</div>
+
+<div>
+    <h2>Cantidad de Productos Creados</h2>
+    <% my_chart = Product.group_by_month(:created_at, last: 3, format: "%b %Y").count %>
+    <%= column_chart my_chart %>
+</div>

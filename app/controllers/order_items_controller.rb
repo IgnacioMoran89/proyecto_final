@@ -5,6 +5,10 @@ class OrderItemsController < InheritedResources::Base
     @order_item = @order.order_items.new(order_params)
     @order.save
     session[:order_id] = @order.id
+
+    respond_to do |format|
+      format.js {redirect_to carts_url} 
+    end 
 end
 
 

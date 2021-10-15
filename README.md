@@ -18,3 +18,7 @@ Things you may want to cover:
 * El sistema de calificación fue implementado para los perfiles de las florerías.
 * Interacción del usuario con los productos: realizar una orden mediante carro de compra.
 * Usuario elimina recursos, cancelando y removiando los productos del carro de compra.
+
+* HITO 3
+
+* Gráficos con chartkick agregados en perfil administrador en el Dashboard de activ admin
