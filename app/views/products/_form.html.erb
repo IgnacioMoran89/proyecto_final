@@ -17,6 +17,21 @@
   </div>
 
   <div class="field">
+    <%= form.label :categories, "Categories" %>
+    <br>
+    <%= form.collection_check_boxes(:category_ids,
+                                    Category.all,
+                                    :id, :name) do |b| %>
+                                        <%= b.label class:"label-checkbox" do%>
+                                          <%=b.check_box + b.text%>
+                                          <br>
+                                        <%end%>
+                                        <br>
+                                    <% end %>
+  </div>
+
+
+  <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
@@ -29,11 +44,6 @@
   <div class="field">
     <%= form.label :img_url %>
     <%= form.text_field :img_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :shop_profile_id %>
-    <%= form.text_field :shop_profile_id %>
   </div>
 
   <div class="actions">

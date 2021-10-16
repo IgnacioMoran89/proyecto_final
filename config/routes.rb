@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :order_items
+  resources :reviews
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :payments
@@ -7,9 +9,15 @@ Rails.application.routes.draw do
   resources :products
   resources :checkouts
   resources :orders
-  resources :shop_profiles
+  resource :cart, only: [:show]
+
+  resources :shop_profiles do
+    resources :reviews, except: [:show, :index]
+  end
+
   devise_for :users, controllers: {
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
   root to: "home#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

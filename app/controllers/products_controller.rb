@@ -1,9 +1,11 @@
 class ProductsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_product, only: %i[ show edit update destroy ]
 
   # GET /products or /products.json
   def index
     @products = Product.all
+    @order_item = current_order.order_items.new
   end
 
   # GET /products/1 or /products/1.json
@@ -13,6 +15,8 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @shop_profiles = ShopProfile.pluck :name, :id #Pluck disponibiliza atributos de otro modelo
+    @users = User.pluck :name, :id #Pluck disponibiliza atributos de otro modelo
   end
 
   # GET /products/1/edit
@@ -21,7 +25,8 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
-    @product = Product.new(product_params)
+    @product = Product.new(product_params.merge(user_id: current_user.id))
+    @categories = Category.all
 
     respond_to do |format|
       if @product.save
@@ -64,6 +69,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :description, :price, :img_url, :shop_profile_id)
+      params.require(:product).permit(:name, :description, :price, :img_url, :shop_profile_id, :user_id, {category_ids: []})
     end
 end

@@ -1,0 +1,57 @@
+
+  <div id= "card-1" class="card">
+    
+    <h5 class="card-header">¡Bienvenido a Flor Market!</h5>
+    <div class="card-body">
+      <% if user_signed_in? %>
+
+        <div class= "container pt-5">
+        <h5 class="card-header">Explora nuestras florerías</h5>
+        <div class= "row">
+            <div class= "col-12 col-md-4 p-4">
+            
+            </div>
+
+            <div class= "col-12 col-md-4 p-4">
+              <div class="card h-100">
+                <div class="imagen">
+                  <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGqgCczwVoj59jFJdDbAR6OOt624VACeIPOQ&usqp=CAU" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-center">SANTIAGO</h5>
+                  <hr>
+                  <div class="text-center">
+
+                    <a href="/products/" class="botón btn btn-primary">¡Ver Más!</a>    
+                  </div>
+                </div>	
+              </div>	
+            </div>
+
+            <div class= "col-12 col-md-4 p-4">
+
+            </div>
+
+          </div>
+        </div>
+      <% else %>
+        <h5 class="card-title">Aquí encontrarás lo mejor en Flores para regalar</h5>
+        <p class="card-text">Busca - Elige - Compra</p>
+        <a href="/products/" class="btn btn-primary">¡Ver Productos!</a>
+      <% end %>
+    </div>
+  </div>
+
+<br>
+<div class="card mb-3">
+    <% if user_signed_in? %>  
+      
+    <% else %>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2TIf8EIK9R6WETe_z9RBlOiDXgFRcgOc5jg&usqp=CAU" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">¡Encuentra todo lo que necesitas!</h5>
+        <p class="card-text">Las flores más frescas en un solo lugar</p>
+        <a href="/products/" class="btn btn-primary">¡Ver Productos!</a>
+      </div>
+    <% end %>
+</div>

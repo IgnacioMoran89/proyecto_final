@@ -1,4 +1,5 @@
 class ShopProfilesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_shop_profile, only: %i[ show edit update destroy ]
 
   # GET /shop_profiles or /shop_profiles.json
@@ -8,11 +9,19 @@ class ShopProfilesController < ApplicationController
 
   # GET /shop_profiles/1 or /shop_profiles/1.json
   def show
+    @reviews = Review.where(shop_profile_id: @shop_profile.id).order("created_at DESC")
+
+    if @reviews.blank?
+      @avg_review = 0
+    else
+      @avg_review = @reviews.average(:rating).round(2)
+    end
   end
 
   # GET /shop_profiles/new
   def new
     @shop_profile = ShopProfile.new
+    @users = User.pluck :name, :id #Pluck disponibiliza atributos de otro modelo
   end
 
   # GET /shop_profiles/1/edit
@@ -21,7 +30,7 @@ class ShopProfilesController < ApplicationController
 
   # POST /shop_profiles or /shop_profiles.json
   def create
-    @shop_profile = ShopProfile.new(shop_profile_params)
+    @shop_profile = ShopProfile.new(shop_profile_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @shop_profile.save

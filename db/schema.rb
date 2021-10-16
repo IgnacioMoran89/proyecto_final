@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_05_000847) do
+ActiveRecord::Schema.define(version: 2021_10_15_214539) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -65,14 +65,27 @@ ActiveRecord::Schema.define(version: 2021_10_05_000847) do
     t.index ["order_id"], name: "index_checkouts_on_order_id"
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.decimal "total"
+    t.decimal "unit_price"
+    t.integer "product_id"
+    t.integer "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
   create_table "orders", force: :cascade do |t|
-    t.integer "number"
+    t.string "number"
     t.decimal "total"
     t.string "state"
     t.integer "user_id"
     t.integer "shop_profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "subtotal"
     t.index ["shop_profile_id"], name: "index_orders_on_shop_profile_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -95,13 +108,24 @@ ActiveRecord::Schema.define(version: 2021_10_05_000847) do
     t.integer "shop_profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["shop_profile_id"], name: "index_products_on_shop_profile_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "shop_profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "shop_profiles", force: :cascade do |t|
     t.string "name"
     t.string "phone"
-    t.integer "rating"
+    t.string "rating"
     t.text "comment"
     t.string "address"
     t.string "description"
@@ -123,6 +147,8 @@ ActiveRecord::Schema.define(version: 2021_10_05_000847) do
     t.string "last_name"
     t.string "phone"
     t.integer "role"
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

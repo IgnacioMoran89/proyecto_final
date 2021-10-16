@@ -1,35 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
+<h2 class= 'text-center'>Productos</h2>
+<div class="row">
+  <div class="col-md-8 offset-2">
+    <div class="container">
+      <div class="row">
+          <% @products.each do |product| %>
+            <div class="col-md-4">
+              <div class="card">
+                <img class="card-img-top"src="<%= product.img_url %>" alt="<%=product.name%>"/>
+                <div class="card-block">
+                  <h5 class="card-title"><%= product.name %></h5>
+                  <div class="card-text">
+                    <div class="badge badge-primary"><%=product.categories.name %></div>
+                    <div><%= product.description %></div>
+                    <div><%= number_to_currency product.price %></div>
+                  </div>
+                  <div class="row float-right">
+                    <div class="col-md-12">
+                      <%= form_for @order_item, remote: true  do |f|%>
+                        <%= f.hidden_field :product_id, :value => product.id %>
+                        <%= f.number_field :quantity, :value => 1, :min =>  1%>
+                        <%= f.submit "Add to Card "%>
+                      <% end %>
+                    </div>
+                      <div><%= link_to 'Show', product %></div>
+                      <% if user_signed_in? && (product.user_id == current_user.id) %>
+                        <div><%= link_to 'Edit', edit_product_path(product) %></div>
+                        <div><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+                      <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Img url</th>
-      <th>Shop profile</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= product.price %></td>
-        <td><%= product.img_url %></td>
-        <td><%= product.shop_profile %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br>
-
+<div id="card">
+  <%= render 'carts/cart'%>
+</div>
 <%= link_to 'New Product', new_product_path %>
+
+
+
+<hr>
