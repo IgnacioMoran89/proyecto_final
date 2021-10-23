@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   resources :products
   resources :checkouts
   resources :orders
-  resource :cart, only: [:show]
+  resource :cart, only: [:show, :update, :create] do 
+    member do
+      post :pay_with_paypal
+      get :process_paypal_payment
+    end
+  end 
 
   resources :shop_profiles do
     resources :reviews, except: [:show, :index]

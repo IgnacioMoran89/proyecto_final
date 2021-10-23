@@ -3,9 +3,15 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
+         after_create :welcome_send
 
   enum role: [:customer, :client, :admin]
   has_many :reviews, dependent: :destroy
+
+  #Opción de enviar email
+  def welcome_send
+    WelcomeMailer.welcome_send(self).deliver
+  end
 
   def is?( requested_role )
     self.role == requested_role.to_s
@@ -19,3 +25,4 @@ class User < ApplicationRecord
     end 
   end 
 end
+

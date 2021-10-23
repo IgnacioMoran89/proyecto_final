@@ -1,6 +1,12 @@
 class OrderItemsController < InheritedResources::Base
 
+  def new
+    @checkouts = Checkout.pluck :name, :id
+    @products = Product.all
+  end 
+  
   def create
+    @checkouts = Checkout.pluck :name, :id
     @order = current_order
     @order_item = @order.order_items.new(order_params)
     @order.save

@@ -36,6 +36,11 @@ GEM
     activejob (5.2.6)
       activesupport (= 5.2.6)
       globalid (>= 0.3.6)
+    activemerchant (1.123.0)
+      activesupport (>= 4.2)
+      builder (>= 2.1.2, < 4.0.0)
+      i18n (>= 0.6.9)
+      nokogiri (~> 1.4)
     activemodel (5.2.6)
       activesupport (= 5.2.6)
     activerecord (5.2.6)
@@ -158,6 +163,10 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.7.0)
+      launchy (~> 2.2)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -299,6 +308,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  activemerchant (~> 1.123)
   bootsnap (>= 1.1.0)
   byebug
   cancancan
@@ -311,6 +321,7 @@ DEPENDENCIES
   groupdate
   jbuilder (~> 2.5)
   jquery-rails
+  letter_opener
   listen (>= 3.0.5, < 3.2)
   omniauth-facebook
   omniauth-rails_csrf_protection

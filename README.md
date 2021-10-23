@@ -40,3 +40,5 @@ Things you may want to cover:
 
 * Gráficos con chartkick agregados en perfil administrador en el Dashboard de activ admin
 >>>>>>> rama6
+* Heroku Login ActiveAdmin: email: admin.example.com, password:password
+* Localhost Login ActiveAdmin: email: admin.example.com, password:password

@@ -31,6 +31,7 @@ gem 'activeadmin'
 # gem 'mini_magick', '~> 4.8'
 gem 'jquery-rails'
 gem 'cancancan'
+# gem 'sendgrid-ruby'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'chartkick'
@@ -45,6 +46,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'sqlite3'
   gem 'dotenv-rails'
+  gem 'letter_opener' 
 end
 
 group :development do
@@ -66,3 +68,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem "activemerchant", "~> 1.123"
+
+
