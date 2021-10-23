@@ -12,7 +12,12 @@
                 <div class="card-block">
                   <h5 class="card-title"><%= product.name %></h5>
                   <div class="card-text">
-                    <div class="badge badge-primary"><%=product.categories.name %></div>
+                    
+                    <div class="badge badge-primary">
+                      <% product.categories.each do |category|%>
+                        <%=category.name %>
+                      <% end %>
+                    </div>
                     <div><%= product.description %></div>
                     <div><%= number_to_currency product.price %></div>
                   </div>
@@ -20,11 +25,10 @@
                     <div class="col-md-12">
                       <%= form_for @order_item, remote: true  do |f|%>
                         <%= f.hidden_field :product_id, :value => product.id %>
-                        <%= f.number_field :quantity, :value => 1, :min =>  1%>
-                        <%= f.submit "Add to Card "%>
+                        <%= f.hidden_field :quantity, :value => 1, :min =>  1%>
+                        <%= f.submit " Comprar "%>
                       <% end %>
                     </div>
-                      <div><%= link_to 'Show', product %></div>
                       <% if user_signed_in? && (product.user_id == current_user.id) %>
                         <div><%= link_to 'Edit', edit_product_path(product) %></div>
                         <div><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></div>
@@ -41,9 +45,7 @@
 
 
 <br>
-<div id="card">
-  <%= render 'carts/cart'%>
-</div>
+
 <%= link_to 'New Product', new_product_path %>
 
 

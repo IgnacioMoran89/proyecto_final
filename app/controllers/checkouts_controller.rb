@@ -13,6 +13,7 @@ class CheckoutsController < ApplicationController
   # GET /checkouts/new
   def new
     @checkout = Checkout.new
+    
   end
 
   # GET /checkouts/1/edit
@@ -21,8 +22,7 @@ class CheckoutsController < ApplicationController
 
   # POST /checkouts or /checkouts.json
   def create
-    @checkout = Checkout.new(checkout_params)
-
+    @checkout = Checkout.new(checkout_params.merge(order_id: current_order.id))
     respond_to do |format|
       if @checkout.save
         format.html { redirect_to @checkout, notice: "Checkout was successfully created." }

@@ -4,15 +4,24 @@ class PaymentsController < ApplicationController
   # GET /payments or /payments.json
   def index
     @payments = Payment.all
+    @orders = Order.all
+    @checkouts = Checkout.all
   end
 
   # GET /payments/1 or /payments/1.json
   def show
+    @orders = Order.all
+    @checkouts = Checkout.all
   end
+
 
   # GET /payments/new
   def new
     @payment = Payment.new
+    @order = current_order
+    @checkout = current_checkout
+    @orders = Order.all
+    @checkouts = Checkout.all
   end
 
   # GET /payments/1/edit
@@ -21,7 +30,12 @@ class PaymentsController < ApplicationController
 
   # POST /payments or /payments.json
   def create
-    @payment = Payment.new(payment_params)
+    @order = current_order
+    @orders = Order.all
+    @checkouts = Checkout.all
+    @checkout = current_checkout
+    @payment = Payment.new(payment_params.merge(checkout_id: current_checkout.id))
+    
 
     respond_to do |format|
       if @payment.save
