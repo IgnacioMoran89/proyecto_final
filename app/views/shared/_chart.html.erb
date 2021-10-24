@@ -16,3 +16,9 @@
     <% my_chart = Product.group_by_month(:created_at, last: 3, format: "%b %Y").count %>
     <%= column_chart my_chart %>
 </div>
+
+<div>
+    <h2>Cantidad de Compras</h2>
+    <% my_chart = Payment.group_by_month(:created_at, last: 3, format: "%b %Y").count %>
+    <%= column_chart my_chart %>
+</div>

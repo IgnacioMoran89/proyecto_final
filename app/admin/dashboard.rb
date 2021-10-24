@@ -34,10 +34,6 @@ ActiveAdmin.register_page "Dashboard" do
       panel "Gráfico" do
         render 'shared/chart'
       end
-
-      panel "Gráfico 2" do
-        render 'shared/chart'
-      end
   end # content
 
 
