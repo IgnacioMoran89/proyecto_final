@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @shop_profiles = ShopProfile.pluck :name, :id #Pluck disponibiliza atributos de otro modelo
-    @users = User.pluck :name, :id #Pluck disponibiliza atributos de otro modelo
+    @users = User.pluck :id #Pluck disponibiliza atributos de otro modelo
   end
 
   # GET /products/1/edit
