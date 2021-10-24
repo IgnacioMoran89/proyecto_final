@@ -14,8 +14,8 @@ class ApplicationController < ActionController::Base
 
         :address            => 'smtp.gmail.com',
         :port               => 587,
-        :domain             => 'mail.google.com', #you can also use google.com
-        :authentication     => 'login',
+        :domain             => 'https://flormarketapp.herokuapp.com/', #you can also use google.com
+        :authentication     => 'plain',
         :user_name          => ENV['GMAIL_USERNAME'],
         :password           => ENV['GMAIL_PASSWORD'],
         :enable_starttls_auto => true
