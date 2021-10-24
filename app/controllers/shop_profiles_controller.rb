@@ -21,7 +21,7 @@ class ShopProfilesController < ApplicationController
   # GET /shop_profiles/new
   def new
     @shop_profile = ShopProfile.new
-    @users = User.pluck :name, :id #Pluck disponibiliza atributos de otro modelo
+    @users = User.pluck :id #Pluck disponibiliza atributos de otro modelo
   end
 
   # GET /shop_profiles/1/edit
