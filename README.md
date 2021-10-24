@@ -39,7 +39,6 @@ Things you may want to cover:
 * HITO 3
 
 * Gráficos con chartkick agregados en perfil administrador en el Dashboard de activ admin
->>>>>>> rama6
 * Heroku Login ActiveAdmin: email: admin.example.com, password:password
 * Localhost Login ActiveAdmin: email: admin.example.com, password:password
 * Inicio de sesión con Facebook funciona desde heroku.
