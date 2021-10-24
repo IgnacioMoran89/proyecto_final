@@ -14,11 +14,15 @@
  *= require_self
  */
 
-#navbar {
-    position: fixed;
+
+
+nav, footer{
+    background-color: #E83E8C;
     height: 60px;
-    background-color:#7ac07d;   
-    margin-bottom: 10px;
-    color: white;
+}
+
+.navbar-light .navbar-toggler {
+    color:#fff;
+    border-color: #fff;
     
 }
