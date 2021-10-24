@@ -6,11 +6,6 @@ class CartsController < ApplicationController
 
     end
 
-    def create
-      @orders = Order.pluck :id
-
-    end
-
 
     def pay_with_paypal
       order = helpers.current_order
@@ -55,7 +50,6 @@ class CartsController < ApplicationController
 
         payment = Payment.find_by(token: response.token)
         order = payment.order
-        checkout = payment.checkout
         order.state = 'completed'
         payment.state = 'completed'
 
@@ -67,16 +61,6 @@ class CartsController < ApplicationController
       else
         redirect_to root_url, alert: "Hemos tenido problemas para procesar tu pago"
       end
-    end
-
-    private
-
-    def order_params
-      params.require(:order_item).permit(:quantity, :product_id, :user_id)
-    end
-
-    def payment_params
-      params.require(:payment).permit(:token, :state, :total, :checkout_id)
     end
 
 
