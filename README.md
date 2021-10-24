@@ -42,3 +42,5 @@ Things you may want to cover:
 >>>>>>> rama6
 * Heroku Login ActiveAdmin: email: admin.example.com, password:password
 * Localhost Login ActiveAdmin: email: admin.example.com, password:password
+* Inicio de sesión con Facebook funciona desde heroku.
+* Action Mailer desde heroku hecho con variables de entorno(envio de correo desde gmail) (posteriormente agregaré SendGrid cuando me den acceso a las credenciales)
