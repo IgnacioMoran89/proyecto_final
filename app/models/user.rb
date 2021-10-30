@@ -13,8 +13,8 @@ class User < ApplicationRecord
     WelcomeMailer.welcome_send(self).deliver
   end
 
-  def is?( requested_role )
-    self.role == requested_role.to_s
+  def is_admin?
+    role == admin!
   end
 
   def self.from_omniauth(auth)

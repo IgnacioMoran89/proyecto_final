@@ -14,10 +14,15 @@
  *= require_self
  */
 
+ body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
 
-
-nav, footer{
-    background-color: #E83E8C;
+nav{
+   
     height: 60px;
 }
 
@@ -25,4 +30,11 @@ nav, footer{
     color:#fff;
     border-color: #fff;
     
+}
+
+.footer{
+    
+    flex: 0 0 40px;/*or just height:50px;*/
+    margin-top: auto;
+
 }

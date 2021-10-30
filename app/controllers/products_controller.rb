@@ -6,16 +6,21 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @order_item = current_order.order_items.new
+    @shop_profiles = ShopProfile.pluck :name, :id, :description, :phone, :address, :rating, :comment
+    @shop_profiles = ShopProfile.all 
   end
 
   # GET /products/1 or /products/1.json
   def show
+    @shop_profiles = ShopProfile.pluck :name, :id, :description, :phone, :address, :rating, :comment
+    @shop_profiles = ShopProfile.all 
   end
 
   # GET /products/new
   def new
     @product = Product.new
-    @shop_profiles = ShopProfile.pluck :name, :id #Pluck disponibiliza atributos de otro modelo
+    @shop_profiles = ShopProfile.pluck :name, :id, :description, :phone, :address, :rating, :comment
+    @shop_profiles = ShopProfile.all o
     @users = User.pluck :id #Pluck disponibiliza atributos de otro modelo
   end
 
@@ -25,8 +30,11 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
-    @product = Product.new(product_params.merge(user_id: current_user.id))
+    @product = Product.new(product_params)
     @categories = Category.all
+    @shop_profiles = ShopProfile.pluck :name, :id, :description, :phone, :address, :rating, :comment
+    @shop_profiles = ShopProfile.all 
+    
 
     respond_to do |format|
       if @product.save

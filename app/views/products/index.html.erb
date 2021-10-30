@@ -1,23 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h2 class= 'text-center'>Productos</h2>
-<div class="row">
-  <div class="col-md-8 offset-2">
-    <div class="container">
+
+  <h2 class="display-5 font-weight-bold my-5 text-center">Productos</h2>
+
+
+
+    <div class="container px-5">
       <div class="row">
           <% @products.each do |product| %>
-            <div class="col-md-4">
-              <div class="card">
-                <img class="card-img-top"src="<%= product.img_url %>" alt="<%=product.name%>"/>
-                <div class="card-block">
+            <div class="col-12 col-md-4 p-4 seccion">
+              <div class="card card-1 h-100">
+                <img class="card-img-top flower-img"src="<%= product.img_url %>" alt="<%=product.name%>"/>
+                <div class="card-body">
                   <h5 class="card-title"><%= product.name %></h5>
                   <div class="card-text">
-                    
-                    <div class="badge badge-primary">
-                      <% product.categories.each do |category|%>
-                        <%=category.name %>
-                      <% end %>
-                    </div>
+                
                     <div><%= product.description %></div>
                     <div><%= number_to_currency product.price %></div>
                   </div>
@@ -26,7 +23,7 @@
                       <%= form_for @order_item, remote: true  do |f|%>
                         <%= f.hidden_field :product_id, :value => product.id %>
                         <%= f.hidden_field :quantity, :value => 1, :min =>  1%>
-                        <%= f.submit " Comprar "%>
+                        <div><%= f.submit " Comprar "%> </div>
                       <% end %>
                     </div>
                       <% if user_signed_in? && (product.user_id == current_user.id) %>
@@ -38,13 +35,12 @@
               </div>
             </div>
           <% end %>
+
       </div>
     </div>
-  </div>
-</div>
+ 
 
 
-<br>
 
 <%= link_to 'New Product', new_product_path %>
 

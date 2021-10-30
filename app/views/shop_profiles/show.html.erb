@@ -1,54 +1,57 @@
 <p id="notice"><%= notice %></p>
 
-<div class="panel panel-default">
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="star-rating" data-score= <%= @avg_review %> ></div>
-        <em><%= "#{@reviews.length} reviews" %></em>
-        <div class="table-responsive">
-          <table class="table">
-            <tbody>
-              <tr>
-                <td><strong>Nombre:</strong></td>
-                <td><%= @shop_profile.name %></td>
-              </tr>
-              <tr>
-                <td><strong>Descripción:</strong></td>
-                <td><%= @shop_profile.description %></td>
-              </tr>
-              <tr>
-                <td><strong>Dirección:</strong></td>
-                <td><%= @shop_profile.address %></td>
-              </tr>
-              <tr>
-                <td><strong>Fono:</strong></td>
-                <td><%= @shop_profile.phone %></td>
-              </tr>
-            </tbody>
-          </table>
-          <%= link_to "Write a Review", new_shop_profile_review_path(@shop_profile) %>
-        </div>
-      </div>
-      <div class="col-md-7 col-md-offset-1">
-        <h1 class="review_title"><%= @shop_profile.name %></h1>
-        <p><%= @shop_profile.description %></p>
 
-        <% if @reviews.blank? %>
-          <h3>No reviews just yet, would you like to add the first!</h3>
-          <%= link_to "Write Review", new_shop_profile_review_path(@shop_profile), class: "btn btn-danger" %>
-        <% else %>
-          <% @reviews.each do |review| %>
-            <div class="reviews">
-              <div class="star-rating" data-score= <%= review.rating %> ></div>
-              <p><%= review.comment %></p>
+      <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="star-rating" data-score= <%= @avg_review %> ></div>
+            <em><%= "#{@reviews.length} reviews" %></em>
+            <div class="table-responsive">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td><strong>Nombre:</strong></td>
+                    <td><%= @shop_profile.name %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Descripción:</strong></td>
+                    <td><%= @shop_profile.description %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Dirección:</strong></td>
+                    <td><%= @shop_profile.address %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Fono:</strong></td>
+                    <td><%= @shop_profile.phone %></td>
+                  </tr>
+                </tbody>
+              </table>
+              <%= link_to "Write a Review", new_shop_profile_review_path(@shop_profile) %>
             </div>
-          <% end %>
-        <% end %>
+          </div>
+          <div class="col-md-7 col-md-offset-1">
+            <h1 class="review_title"><%= @shop_profile.name %></h1>
+            <p><%= @shop_profile.description %></p>
+
+            <% if @reviews.blank? %>
+              <h3>No reviews just yet, would you like to add the first!</h3>
+              <%= link_to "Write Review", new_shop_profile_review_path(@shop_profile), class: "btn btn-danger" %>
+            <% else %>
+              <% @reviews.each do |review| %>
+                <div class="reviews">
+                  <div class="star-rating" data-score= <%= review.rating %> ></div>
+                  <p><%= review.comment %></p>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
 
 <%= link_to 'Edit', edit_shop_profile_path(@shop_profile) %> |
 <%= link_to 'Back', shop_profiles_path %>

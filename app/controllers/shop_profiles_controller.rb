@@ -5,10 +5,17 @@ class ShopProfilesController < ApplicationController
   # GET /shop_profiles or /shop_profiles.json
   def index
     @shop_profiles = ShopProfile.all
+    @products = Product.pluck :id #Pluck disponibiliza atributos de otro modelo
+    @order_item = current_order.order_items.new
   end
 
   # GET /shop_profiles/1 or /shop_profiles/1.json
   def show
+    
+    @products = Product.pluck :id, :name, :description, :price, :img_url, :shop_profile_id
+    @categories = Category.pluck :id, :name
+    @products = Product.all
+    @order_item = current_order.order_items.new
     @reviews = Review.where(shop_profile_id: @shop_profile.id).order("created_at DESC")
 
     if @reviews.blank?
@@ -20,6 +27,8 @@ class ShopProfilesController < ApplicationController
 
   # GET /shop_profiles/new
   def new
+    @products = Product.pluck :id
+    @products = Product.all
     @shop_profile = ShopProfile.new
     @users = User.pluck :id #Pluck disponibiliza atributos de otro modelo
   end
@@ -30,7 +39,9 @@ class ShopProfilesController < ApplicationController
 
   # POST /shop_profiles or /shop_profiles.json
   def create
-    @shop_profile = ShopProfile.new(shop_profile_params.merge(user_id: current_user.id))
+    @products = Product.pluck :id
+    @products = Product.all
+    @shop_profile = ShopProfile.new(shop_profile_params)
 
     respond_to do |format|
       if @shop_profile.save
@@ -73,6 +84,6 @@ class ShopProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def shop_profile_params
-      params.require(:shop_profile).permit(:name, :phone, :rating, :comment, :address, :description, :user_id)
+      params.require(:shop_profile).permit(:name, :phone, :rating, :comment, :address, :description, :user_id, :product_id)
     end
 end
