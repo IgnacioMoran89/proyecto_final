@@ -1,19 +1,15 @@
-<h1>Producto Actual</h1>
+<div class="card">
+  <h1 class="card-header text-center"> <i id="cart-icon" class="fas fa-shopping-cart fa-1x"></i></h1>
 
 
-
-<% @order_items.each do |item| %>
-
-    <h3>Producto: <%= item.product.name %></h3>
-    <h5>Precio:<%= item.product.price %></h5>
-
-
-    <%= form_for item, remote: true do |f| %>
-        <%= f.hidden_field :product_id, :value => item.product.id %>
-        <%= f.number_field :quantity, :value => item.quantity.to_i %>
-        <%= f.submit "Update Cart "%>
-        <%= link_to "Remove Items", order_item_path(item), method: :delete, remote: true%>
+  <div class="card-1" style="width: 100%">
+    <% @order_items.each do |item| %>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><img class="card-img-top flower-img"src="<%= item.product.img_url %>" alt="<%=item.product.name%>"/></li>
+        <li class="list-group-item">Producto: <%= item.product.name %></li>
+        <li class="list-group-item">Total: <%= item.total %></li>
+        <li class="list-group-item"><%= link_to "Remover Producto", order_item_path(item), method: :delete, remote: true%></li>
+      </ul>
     <% end %>
-    <h2>Total: <%= item.total %></h2>
-
-<% end %>
+  </div>
+</div>

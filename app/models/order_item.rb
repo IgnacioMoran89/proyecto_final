@@ -28,4 +28,5 @@ class OrderItem < ApplicationRecord
   def set_total
       self[:total] = total * quantity
   end
+
 end

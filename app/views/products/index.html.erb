@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 
-  <h2 class="display-5 font-weight-bold my-5 text-center">Productos</h2>
+  <h2 class="display-5 font-weight-bold my-3 text-center">Productos</h2>
 
 
 
@@ -26,7 +26,7 @@
                         <div><%= f.submit " Comprar "%> </div>
                       <% end %>
                     </div>
-                      <% if user_signed_in? && (product.user_id == current_user.id) %>
+                      <% if current_user.is_admin? %>
                         <div><%= link_to 'Edit', edit_product_path(product) %></div>
                         <div><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></div>
                       <% end %>
@@ -41,8 +41,9 @@
  
 
 
-
+<% if current_user.is_admin? %>
 <%= link_to 'New Product', new_product_path %>
+<% end %>
 
 
 

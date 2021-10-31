@@ -22,10 +22,10 @@ class CheckoutsController < ApplicationController
 
   # POST /checkouts or /checkouts.json
   def create
-    @checkout = Checkout.new(checkout_params.merge(order_id: current_order.id))
+    @checkout = Checkout.new(checkout_params.merge(order_id: current_order.id, user_id: current_user.id))
     respond_to do |format|
       if @checkout.save
-        format.html { redirect_to @checkout, notice: "Checkout was successfully created." }
+        format.html { redirect_to @checkout, notice: "Su orden ha sido creada con éxito. Entregaremos su producto en el día indicado" }
         format.json { render :show, status: :created, location: @checkout }
       else
         format.html { render :new, status: :unprocessable_entity }

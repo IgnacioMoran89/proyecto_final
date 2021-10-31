@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @shop_profiles = ShopProfile.pluck :name, :id, :description, :phone, :address, :rating, :comment
-    @shop_profiles = ShopProfile.all o
+    @shop_profiles = ShopProfile.all 
     @users = User.pluck :id #Pluck disponibiliza atributos de otro modelo
   end
 

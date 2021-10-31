@@ -1,10 +1,16 @@
 class CartsController < ApplicationController
 
-    def show
-        @order_items = current_order.order_items 
-        @order = current_order
+  def index
+    @order_items = current_order.order_items 
+    @order = current_order
+  end
+    
+  def show
+    @order_items = current_order.order_items 
+    @order = current_order
+  end
 
-    end
+
 
 
     def pay_with_paypal
@@ -57,7 +63,7 @@ class CartsController < ApplicationController
           order.save!
           payment.save!
         end
-        redirect_to root_url, notice: "Compra Exitosa"
+        redirect_to new_checkout_url, notice: "Pago exitoso. Termina tu pedido a continuación"
       else
         redirect_to root_url, alert: "Hemos tenido problemas para procesar tu pago"
       end

@@ -4,6 +4,8 @@ class OrderItemsController < InheritedResources::Base
     @checkouts = Checkout.pluck :id
     @products = Product.all
   end 
+
+
   
   def create
     @checkouts = Checkout.pluck :id

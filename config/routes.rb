@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :order_items
+  
   resources :reviews
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -9,12 +10,17 @@ Rails.application.routes.draw do
   resources :products
   resources :checkouts
   resources :orders
-  resource :cart, only: [:show, :update, :create] do 
+  get 'my_orders', to: 'orders#my_orders'
+  
+
+  resource :cart, only: [:show, :update, :create, :index] do 
     member do
       post :pay_with_paypal
       get :process_paypal_payment
     end
   end 
+
+
 
   resources :shop_profiles do
     resources :reviews, except: [:show, :index]

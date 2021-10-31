@@ -7,7 +7,8 @@ class User < ApplicationRecord
 
   enum role: [:customer, :client, :admin]
   has_many :reviews, dependent: :destroy
-
+  has_many :orders
+  has_many :checkouts
   #Opción de enviar email
   def welcome_send
     WelcomeMailer.welcome_send(self).deliver
