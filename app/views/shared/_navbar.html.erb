@@ -11,6 +11,8 @@
               <% if user_signed_in? %>              
                 <li role="separator" class="divider"></li>
                 <li><%= link_to "Home | ", root_path, class: 'nav-link text-light' %></li>
+                <li><%= link_to "Productos | ", products_path, class: 'nav-link text-light' %></li>
+                <li><%= link_to "Florerías | ", shop_profiles_path, class: 'nav-link text-light' %></li>
                 <li><%=link_to ' Cerrar Sesión', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %></li>
               <% else %>
                 <li><%= link_to "Home | ", root_path, class: 'nav-link text-light' %></li>

@@ -1,34 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Shop Profiles</h1>
+<h2 class="display-5 font-weight-bold my-3 text-center">Florerías</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Phone</th>
-      <th>Address</th>
-      <th>Description</th>
-    
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container px-5">
+  <div class="row">
+      <% @shop_profiles.each do |shop_profile| %>
+        <div class="col-12 col-md-4 p-4 seccion">
+          <div class="card card-1 h-100">
+            <img class="card-img-top flower-img"src="<%= shop_profile.img_url %>" alt="<%=shop_profile.name%>"/>
+            <div class="card-body">
+              <h5 class="card-title"><%= shop_profile.name %></h5>
+              <div class="card-text">
+            
+                <div>Fono:<%= shop_profile.phone %></div>
+                <div>Dirección:<%= shop_profile.address %></div>
+                <div><%= shop_profile.description %></div>
+                
+              </div>
+              <div class="row float-right">
+                <%= link_to 'Reseñas', shop_profile_path(shop_profile) %>
+                  <% if current_user.is_admin? %>
+                    <div><%= link_to 'Edit', edit_shop_profile_path(shop_profile) %></div>
+                    <div><%= link_to 'Destroy', shop_profile, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+                  <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
 
-  <tbody>
-    <% @shop_profiles.each do |shop_profile| %>
-      <tr>
-        <td><%= shop_profile.name %></td>
-        <td><%= shop_profile.phone %></td>
-        <td><%= shop_profile.address %></td>
-        <td><%= shop_profile.description %></td>
-        <td><%= link_to 'Show', shop_profile %></td>
-        <td><%= link_to 'Edit', edit_shop_profile_path(shop_profile) %></td>
-        <td><%= link_to 'Destroy', shop_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
-<br>
-
+<% if current_user.is_admin? %>
 <%= link_to 'New Shop Profile', new_shop_profile_path %>
+<% end %>
+
+<script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+</script>

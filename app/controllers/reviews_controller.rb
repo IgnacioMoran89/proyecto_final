@@ -1,5 +1,5 @@
 class ReviewsController < InheritedResources::Base
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_review, only: [:show, :index, :edit, :update, :destroy]
   before_action :set_shop_profile
   
 

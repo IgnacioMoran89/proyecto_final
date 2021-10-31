@@ -7,6 +7,7 @@ class ShopProfilesController < ApplicationController
     @shop_profiles = ShopProfile.all
     @products = Product.pluck :id #Pluck disponibiliza atributos de otro modelo
     @order_item = current_order.order_items.new
+
   end
 
   # GET /shop_profiles/1 or /shop_profiles/1.json
@@ -84,6 +85,6 @@ class ShopProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def shop_profile_params
-      params.require(:shop_profile).permit(:name, :phone, :rating, :comment, :address, :description, :user_id, :product_id)
+      params.require(:shop_profile).permit(:name, :phone, :rating, :comment, :address, :description, :user_id, :product_id, :img_url)
     end
 end
