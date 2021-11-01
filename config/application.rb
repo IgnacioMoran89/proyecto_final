@@ -17,4 +17,15 @@ module MarketplaceApp
     # the framework and any gems in your application.
   end
 
+  ActionMailer::Base.smtp_settings = {
+
+    :address            => 'smtp.gmail.com',
+    :port               => 587,
+    :domain             => 'https://flormarketapp.herokuapp.com/', #you can also use google.com
+    :authentication     => 'plain',
+    :user_name          => ENV['GMAIL_USERNAME'],
+    :password           => ENV['GMAIL_PASSWORD'],
+    :enable_starttls_auto => true
+     
+}
 end
