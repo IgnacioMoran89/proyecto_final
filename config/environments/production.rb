@@ -109,6 +109,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default charset: "utf-8"
   config.action_mailer.delivery_method = :smtp
+  
   ActionMailer::Base.smtp_settings = {
 
     :address            => 'smtp.gmail.com',
