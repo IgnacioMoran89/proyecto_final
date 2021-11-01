@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :orders
   has_many :checkouts
+  validates :email, presence: true, uniqueness: true
+  
   #Opción de enviar email
   def welcome_send
     WelcomeMailer.welcome_send(self).deliver

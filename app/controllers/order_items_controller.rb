@@ -15,7 +15,7 @@ class OrderItemsController < InheritedResources::Base
     session[:order_id] = @order.id
 
     respond_to do |format|
-      format.js {redirect_to cart_url} 
+      format.js {redirect_to new_checkout_url} 
     end 
 end
 

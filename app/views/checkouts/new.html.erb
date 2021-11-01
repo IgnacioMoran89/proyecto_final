@@ -1,10 +1,10 @@
 <h1 class="text-center">Checkout</h1>
 
 
-
-
+<div id="card" class="card-header">
+  <%= render 'carts/cart'%>
+</div>
+<br>
 <%= render 'form', checkout: @checkout %>
 
 
-
-<%= link_to 'Back', checkouts_path %>

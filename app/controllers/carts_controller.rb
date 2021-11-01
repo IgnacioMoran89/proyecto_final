@@ -63,7 +63,7 @@ class CartsController < ApplicationController
           order.save!
           payment.save!
         end
-        redirect_to new_checkout_url, notice: "Pago exitoso. Termina tu pedido a continuación"
+        redirect_to root_url, notice: "¡Pago exitoso. Tu pedido será procesado a la brevedad!"
       else
         redirect_to root_url, alert: "Hemos tenido problemas para procesar tu pago"
       end

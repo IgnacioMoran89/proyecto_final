@@ -12,15 +12,18 @@
                 <li role="separator" class="divider"></li>
                 <li><%= link_to "Home | ", root_path, class: 'nav-link text-light' %></li>
                 <li><%= link_to "Productos | ", products_path, class: 'nav-link text-light' %></li>
-                <li><%= link_to "Florerías | ", shop_profiles_path, class: 'nav-link text-light' %></li>
-                <li><%=link_to ' Cerrar Sesión', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %></li>
+                <li><%= link_to "Florerías ", shop_profiles_path, class: 'nav-link text-light' %></li>
+                <% if current_user.is_admin? %>
+                  <li><%= link_to "Dashboard | ", admin_root_path, class: 'nav-link text-light' %></li>
+                <% end %>
+                <li><%=link_to '| Cerrar Sesión', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %></li>
               <% else %>
                 <li><%= link_to "Home | ", root_path, class: 'nav-link text-light' %></li>
                 <li><%= link_to "Acceder | ", user_session_path, class: 'nav-link text-light' %></li>
                 <li><%= link_to "Acceder con Facebook | ", user_facebook_omniauth_authorize_path, method: :post, class: 'nav-link text-light' %></li>
                 <li><%= link_to " Registrarse", new_user_registration_path, class: 'nav-link text-light' %></li>
               <% end %>
-            </ul >
+            </ul>
         </div >
     </div >
   </nav >

@@ -12,46 +12,58 @@
   <% end %>
 
   <div class="container">
-    <form>
-      <div class="form-group">
-        <%= form.label :message %>
-        <%= form.text_area :message %>
+    
+      <div class="field mb-3 text-11">
+        <%= form.label :message, 'Mensaje de la tarjeta' %>
+        <%= form.text_area :message, required: true, maxlength:"140", class: " text-11 form-control rounded-pill rounded ml-4", style: "width:90%; resize:none;" %>
       </div>
 
       <div class="form-group">
-        <%= form.label :signature %>
-        <%= form.text_area :signature %>
+        <%= form.label :signature, 'Quién firma la tarjeta (alias o nombre)' %>
+        <%= form.text_area :signature, required: true, maxlength:"140", class: " text-11 form-control rounded-pill rounded ml-4", style: "width:90%; resize:none;" %>
       </div>
 
       <div class="form-group">
-        <%= form.label :recipient_name %>
-        <%= form.text_field :recipient_name %>
+        <%= form.label :recipient_name, 'Quién recibe' %>
+        <%= form.text_field :recipient_name, required: true, maxlength:"140", class: " text-11 form-control rounded-pill rounded ml-4", style: "width:90%; resize:none;" %>
       </div>
 
       <div class="form-group">
-        <%= form.label :phone %>
-        <%= form.text_field :phone %>
+        <%= form.label :phone, 'Fono quién envía' %>
+        <%= form.text_field :phone, required: true, maxlength:"140", class: " text-11 form-control rounded-pill rounded ml-4", style: "width:90%; resize:none;" %>
       </div>
 
       <div class="form-group">
-        <%= form.label :address %>
-        <%= form.text_field :address %>
+        <%= form.label :address, 'Dirección de entrega' %>
+        <%= form.text_field :address, required: true, maxlength:"140", class: " text-11 form-control rounded-pill rounded ml-4", style: "width:90%; resize:none;" %>
       </div>
 
       <div class="form-group">
-        <%= form.label :city %>
-        <%= form.text_field :city %>
+        <%= form.label :city, 'Comuna de entrega' %>
+        <%= form.text_field :city, required: true, maxlength:"140", class: " text-11 form-control rounded-pill rounded ml-4", style: "width:90%; resize:none;" %>
       </div>
 
       <div class="form-group">
-        <%= form.label :florist_instruction %>
-        <%= form.text_area :florist_instruction %>
+        <%= form.label :delivery_date, 'Fecha de entrega' %>
+        <%= form.date_select :delivery_date, id: :checkout_delivery_date, required: true, maxlength:"140", class: " text-11 form-control rounded-pill rounded ml-4", style: "width:90%; resize:none;" %>
       </div>
+
+      <div class="form-group">
+        <%= form.label :florist_instruction, 'Instrucciones extras al florista' %>
+        <%= form.text_area :florist_instruction, required: true, maxlength:"140", class: " text-11 form-control rounded-pill rounded ml-4", style: "width:90%; resize:none;" %>
+      </div>
+
+
 
 
       <div class="actions">
-        <%= form.submit %>
+        <%= form.submit "Enviar", class: 'btn btn-dark' %>
       </div>
     </div>
-  </form>
+  
 <% end %>
+<br>
+
+<br>
+<br>
+<br>

@@ -25,7 +25,7 @@ class CheckoutsController < ApplicationController
     @checkout = Checkout.new(checkout_params.merge(order_id: current_order.id, user_id: current_user.id))
     respond_to do |format|
       if @checkout.save
-        format.html { redirect_to @checkout, notice: "Su orden ha sido creada con éxito. Entregaremos su producto en el día indicado" }
+        format.html { redirect_to cart_url, notice: "Checkout creado con éxito" }
         format.json { render :show, status: :created, location: @checkout }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -64,6 +64,6 @@ class CheckoutsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def checkout_params
-      params.require(:checkout).permit(:message, :signature, :recipient_name, :phone, :address, :city, :florist_instruction, :order_id)
+      params.require(:checkout).permit(:message, :signature, :recipient_name, :phone, :address, :city, :florist_instruction, :order_id, :delivery_date)
     end
 end
