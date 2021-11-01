@@ -1,4 +1,4 @@
-<% if user_signed_in? && current_user.is_admin? %>
+
   <h1 class="text-center">Checkout</h1>
 
 
@@ -7,7 +7,5 @@
   </div>
   <br>
   <%= render 'form', checkout: @checkout %>
-<% else %>
-  <% controller.redirect_to root_path%>
-<% end %>
+
 
