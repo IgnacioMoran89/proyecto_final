@@ -38,7 +38,7 @@ gem 'mail_form'
 gem 'chartkick'
 gem 'groupdate'
 gem 'omniauth-facebook'
-gem "omniauth-rails_csrf_protection"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
@@ -71,5 +71,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "activemerchant", "~> 1.123"
-
+#gem "omniauth-rails_csrf_protection"
 
