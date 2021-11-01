@@ -9,13 +9,14 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto" >
               <% if user_signed_in? %>              
-                <li role="separator" class="divider"></li>
-                <li><%= link_to "Home | ", root_path, class: 'nav-link text-light' %></li>
-                <li><%= link_to "Productos | ", products_path, class: 'nav-link text-light' %></li>
-                <li><%= link_to "Florerías ", shop_profiles_path, class: 'nav-link text-light' %></li>
                 <% if current_user.is_admin? %>
                   <li><%= link_to "Dashboard | ", admin_root_path, class: 'nav-link text-light' %></li>
+                  <li role="separator" class="divider"></li>
                 <% end %>
+                <li><%= link_to "Home | ", root_path, class: 'nav-link text-light' %></li>
+                <li><%= link_to "Productos | ", products_path, class: 'nav-link text-light' %></li>
+                <li><%= link_to "Ver Florerías | ", shop_profiles_path, class: 'nav-link text-light' %></li>
+                <li><%= link_to "Soy Florería", contacts_path, class: 'nav-link text-light' %></li>
                 <li><%=link_to '| Cerrar Sesión', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %></li>
               <% else %>
                 <li><%= link_to "Home | ", root_path, class: 'nav-link text-light' %></li>

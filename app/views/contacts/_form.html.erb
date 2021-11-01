@@ -1,0 +1,20 @@
+<%= form_for @contact, url: contacts_path do |f| %>
+    <div id="contact-form">
+      <div><%= f.text_field  :name, required: true, class: "contacts-form-text-area", placeholder: "Tu Nombre" %></div><br>
+      <div><%= f.text_field  :florist_name, required: true, class: "contacts-form-text-area", placeholder: "Nombre de tu Florería" %><br></div><br>
+      <div><%= f.text_field  :phone, required: true, class: "contacts-form-text-area", placeholder: "Tu Teléfono" %><br> </div><br>
+      <div><%= f.text_field :email, required: true, class: "contacts-form-text-area", placeholder: "Tu Email" %><br> </div><br>
+      <div><%= f.text_area :message,
+                      rows: 8,
+                      cols: 40,
+                      required: true,
+                      class: "contacts-form-text-area",
+                      placeholder: "Cuéntanos por qué te interesa ser parte de FlorMarket"%><br> </div>
+  
+      <div class= "hidden d-none">
+        <%= f.text_field :nickname %>
+      </div>
+  
+      <%= f.submit 'Enviar', class: 'btn-send' %>
+    </div>
+  <% end %>

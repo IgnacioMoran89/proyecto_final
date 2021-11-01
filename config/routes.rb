@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :contacts
   resources :order_items
   
   resources :reviews

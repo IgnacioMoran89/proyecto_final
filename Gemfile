@@ -30,6 +30,7 @@ gem 'activeadmin'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 gem 'jquery-rails'
+gem 'mail_form'
 # gem 'cancancan'
 # gem 'sendgrid-ruby'
 # Use Capistrano for deployment
