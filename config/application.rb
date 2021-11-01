@@ -25,7 +25,7 @@ module MarketplaceApp
     :authentication     => 'plain',
     :user_name          => ENV['GMAIL_USERNAME'],
     :password           => ENV['GMAIL_PASSWORD'],
-    :enable_starttls_auto => true,
+    :enable_starttls_auto => true
      
 }
 end

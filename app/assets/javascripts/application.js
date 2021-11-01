@@ -16,3 +16,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree
+
+$('.navbar-collapse ul li').click(function(){ 
+    $('.navbar-toggle:visible').click();
+});
