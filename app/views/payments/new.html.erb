@@ -1,5 +1,9 @@
-<h1>New Payment</h1>
+<% if user_signed_in? && current_user.is_admin? %>
+    <h1>New Payment</h1>
 
-<%= render 'form', payment: @payment %>
+    <%= render 'form', payment: @payment %>
 
-<%= link_to 'Back', payments_path %>
+    <%= link_to 'Back', payments_path %>
+<% else %>
+    <% controller.redirect_to root_path%>
+<% end %

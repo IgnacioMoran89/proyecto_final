@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
     include ApplicationHelper
 
+
     protected
 
     def configure_permitted_parameters

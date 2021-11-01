@@ -17,7 +17,7 @@ class User < ApplicationRecord
   end
 
   def is_admin?
-    role == admin!
+    role == "admin"
   end
 
   def self.from_omniauth(auth)

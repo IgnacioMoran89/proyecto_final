@@ -1,10 +1,13 @@
-<h1 class="text-center">Checkout</h1>
+<% if user_signed_in? && current_user.is_admin? %>
+  <h1 class="text-center">Checkout</h1>
 
 
-<div id="card" class="card-header">
-  <%= render 'carts/cart'%>
-</div>
-<br>
-<%= render 'form', checkout: @checkout %>
-
+  <div id="card" class="card-header">
+    <%= render 'carts/cart'%>
+  </div>
+  <br>
+  <%= render 'form', checkout: @checkout %>
+<% else %>
+  <% controller.redirect_to root_path%>
+<% end %>
 
