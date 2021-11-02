@@ -22,7 +22,7 @@ module MarketplaceApp
     :address            => 'smtp.gmail.com',
     :port               => 587,
     :domain             => 'https://flormarketapp.herokuapp.com/', #you can also use google.com
-    :authentication     => 'login',
+    :authentication     => 'plain',
     :user_name          => ENV['GMAIL_USERNAME'],
     :password           => ENV['GMAIL_PASSWORD'],
     :enable_starttls_auto => true
