@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :checkouts
   validates :email, presence: true, uniqueness: true
-  
+  before_create :user_default
   #Opción de enviar email
   def welcome_send
     WelcomeMailer.welcome_send(self).deliver
@@ -27,5 +27,10 @@ class User < ApplicationRecord
       #user.name = auth.info.name
     end 
   end 
+
+  private
+    def user_default
+      self.role == "customer"
+    end
 end
 
