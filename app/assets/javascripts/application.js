@@ -20,3 +20,4 @@
 $('.navbar-collapse ul li').click(function(){ 
     $('.navbar-toggle:visible').click();
 });
+
