@@ -18,7 +18,7 @@
                 
               </div>
               <div class="row float-right">
-                <%= link_to 'Reseñas', shop_profile_path(shop_profile) %>
+                <a href="/shop_profiles/" class="btn btn-outline-dark btn-sm mr-4 py-3">¡Reseñas!</a> 
                   <% if current_user.is_admin? %>
                     <div><%= link_to 'Edit', edit_shop_profile_path(shop_profile) %></div>
                     <div><%= link_to 'Destroy', shop_profile, method: :delete, data: { confirm: 'Are you sure?' } %></div>
