@@ -40,7 +40,7 @@
 
             <% if @reviews.blank? %>
               <h3>No reviews just yet, would you like to add the first!</h3>
-              <%= link_to "Write Review", new_shop_profile_review_path(@shop_profile), class: "btn btn-danger" %>
+              <%= link_to "Escribe una reseña", new_shop_profile_review_path(@shop_profile), class: "btn btn-danger" %>
             <% else %>
               <% @reviews.each do |review| %>
                 <div class="reviews">
